@@ -1,29 +1,31 @@
 using System;
 using System.Collections.Generic;
+using theater.Abstracts;
 
 namespace theater.Models
 {
-    public class Cinema
+    public class Cinema : Business
     {
-        public string Name { get; set; }
-        public string Address { get; set; }
+        public string Address { get { return this.PrimaryAddress; } }
         public List<Theater> Theaters { get; private set; }
 
         public List<Movie> Movies { get; set; } = new List<Movie>();
 
         public Dictionary<Movie, List<Showtime>> Showtimes { get; set; } = new Dictionary<Movie, List<Showtime>>();
 
-        public Cinema(string name, string address, int numTheaters)
+        public Cinema(string name, string address, int numTheaters) : base(name, address)
         {
-            Name = name;
-            Address = address;
             Theaters = new List<Theater>();
-
             for (var i = 1; i <= numTheaters; i++)
             {
                 Theaters.Add(new Theater(i.ToString(), 55, "283x12", this));
             }
+        }
 
+        public override void AddLocation(string x)
+        {
+            base.AddLocation(x);
+            System.Console.WriteLine("ADD FROM CINEMA: " + x);
         }
 
         public void AddShowTime(Theater theater, Movie movie, string time)

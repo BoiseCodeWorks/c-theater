@@ -1,4 +1,5 @@
 ﻿using System;
+using theater.Abstracts;
 using theater.Models;
 
 namespace theater
@@ -7,12 +8,13 @@ namespace theater
     {
         static void Main(string[] args)
         {
-
             Cinema edwards14 = new Cinema("Edwards 14", "123 fake str", 14);
 
-            Movie starWarsVIII = new Movie() { Title = "Star Wars" };
-            Movie jumanji = new Movie() { Title = "Jumanji 2" };
+            edwards14.AddLocation("hey this works");
 
+
+            Movie starWarsVIII = new Movie("Star Wars");
+            Movie jumanji = new Movie("Jumanji 2");
 
             Console.WriteLine("Edwards14.name = " + edwards14.Name);
 
@@ -23,7 +25,7 @@ namespace theater
             edwards14.AddShowTime(edwards14.Theaters[1], starWarsVIII, "1400");
             edwards14.AddShowTime(edwards14.Theaters[3], starWarsVIII, "1500");
             edwards14.DisplayShowtimes(starWarsVIII);
-
+            
 
             // edwards14.Name = "paul";
 

@@ -2,6 +2,12 @@ namespace theater.Models
 {
     public class Movie
     {
-        public string Title { get; set; }
+        public Movie(string title)
+        {
+            Title = title;
+        }
+
+        public string Title { get; protected set; }
+
     }
 }
